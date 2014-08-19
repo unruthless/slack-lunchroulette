@@ -16,8 +16,6 @@ At 11:00am, `@lunchbot` invites `#general` to participate.
 
 At 11:30am, if there are at least 2 participants, `@lunchbot` DMs participants their initial lunch match.
 
-At noon, `@lunchbot` handles cancellations, reshuffles, and DMs new lunch matches as necessary.
-
 Matching algorithm:
 
 * Only 1 participant?
@@ -66,8 +64,6 @@ When `@user` DMs `@lunchbot` at any time on a non-workday:
 
 
 #### Match Flow
-
-
 
 If there is a cancellation after the final reshuffle, `@lunchbot` sends DM:
 
