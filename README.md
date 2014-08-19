@@ -10,9 +10,26 @@ slack-lunch
   * slack has a user named @lunchbot
   * slack has a channel named #lunchspiration
 
-### UI Flow
+### User Flow
 
-#### Subscribe Flow
+At 11:00am, `@lunchbot` invites `#general` to participate.
+
+At 11:30am, if there are at least 2 participants, `@lunchbot` DMs participants their initial lunch match.
+
+At noon, `@lunchbot` handles cancellations, reshuffles, and DMs new lunch matches as necessary.
+
+Matching algorithm:
+
+* Only 1 participant?
+  * Wait.
+* Else
+  * An even number of participants?
+    * Pair them off evenly.
+  * Else
+    * Create a group of 3.
+
+
+### Copy
 
 At 11:00am on a workday, `@lunchbot` posts to `#general`:
 
@@ -35,7 +52,7 @@ When `@user` DMs `@lunchbot` after noon on a workday:
 
     lunchbot 12:01pm
     Aw shucks, <@user>, I've already paired folks up today. But no need to eat alone:
-    Join #lunchspiration to see everywhere I've sent folks to today. Pick a place
+    join #lunchspiration to see everywhere I've sent folks to today. Pick a place
     on the list and I bet you'll find someone you know. Bon apetit!
 
 When `@user` DMs `@lunchbot` at any time on a non-workday:
@@ -50,31 +67,21 @@ When `@user` DMs `@lunchbot` at any time on a non-workday:
 
 #### Match Flow
 
-At 11:30am, `@lunchbot` DMs participants their initial lunch match.
-
-At noon, `@lunchbot` handles cancellations, reshuffles, and DMs new lunch matches as necessary.
-
-Matching algorithm:
-
-  Only 1 participant?
-    Wait.
-  Else
-    An even number of participants?
-      Pair them off evenly.
-    Else
-      Create a group of 3.
-
-Case: only 1 participant
-
-At 11:30am,
-
-    You're the only LunchMatcher today! But I bet one of your colleagues
-    
-    None of your colleagues feel like eating today
 
 
+If there is a cancellation after the final reshuffle, `@lunchbot` sends DM:
 
-Case: odd number of participants
+    lunchbot 12:01pm
+    Aw, bummer, @userB can't make it. But no need to eat alone:
+    join #lunchspiration to see everywhere I've sent folks to today. Pick a place
+    on the list and I bet you'll find someone you know. Bon apetit!
+
+If there is a cancellation after the initial reshuffle, `@lunchbot` sends DM:
+
+    lunchbot 11:36pm
+    Aw, bummer, @userB can't make it. No worries, I'm reshuffling things around
+    and will match you up with someone new by noon.
+
 
 At 11:45am, `@lunchbot` sends DM to `<@userA>:
 
